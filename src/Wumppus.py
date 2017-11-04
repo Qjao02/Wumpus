@@ -21,9 +21,13 @@ class Wumppus :
     def validarPosicao(self):
 
         if self.position[0] == 0 or self.position[0] == 1:
-            if self.position > 2 :
+            if self.position[1] > 1 :
                 return True
             else:
                 return False
         else:
-            return True
+            if self.position[1]  == 0 or self.position[1] == 1:
+                if self.position[0] > 1 :
+                    return True
+                else:
+                    return False
