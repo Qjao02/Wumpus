@@ -3,7 +3,8 @@ from Espaco import Espaco
 
 class Mapa :
     mapa = []
-    pocos = 0
+    nPocos = 0
+    listaDePocos = []
 
 
     def __init__ (self,wumppus):
@@ -22,7 +23,7 @@ class Mapa :
         self.criarWumppus(wumppus)
     
         #cria os pocos
-        self.criarPocos()
+        self.criarPocos(wumppus)
         
 
     def printMapa(self):
@@ -73,14 +74,16 @@ class Mapa :
                     self.mapa[wumppus.position[0]][i].fedo = 1
        
     
-    def criarPocos(self):
+    def criarPocos(self, wumppus):
         
         #o bloco a seguir e responsavel pela insercao dos pocos ao mapa com probalididade 0,2
         for i in range(0,len(self.mapa)):
             for j in range(0,len(self.mapa[i])):
-                if(self.validarPosicao(i, j)):
+                if(self.validarPosicao(i, j, wumppus)):
                     self.inserirPoco(j,i)
-                if self.pocos >= 3:
+                    coordenadas =[i,j]
+                    self.listaDePocos.append(coordenadas)
+                if self.nPocos >= 3:
                     break
         
                 
@@ -91,7 +94,7 @@ class Mapa :
         print x, y
         #se o valor de  random deve estar entre 0 e 2  o poco sera criado
         if randrange(0,10) <= 2 :
-            self.pocos = self.pocos + 1
+            self.nPocos = self.nPocos + 1
             print "entrou if <= 2"
             self.mapa[y][x].poco = 1
             # adciona a briza de cada poco
@@ -108,8 +111,9 @@ class Mapa :
 
     
 
-    def validarPosicao(self, i, j):
-    
+    def validarPosicao(self, i, j, wumppus):
+        if i == wumppus.position[0] and j == wumppus.position[1]:
+            return False
         if i == 0 or i == 1:
             if j > 2 :
                
