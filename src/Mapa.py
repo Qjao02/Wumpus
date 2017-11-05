@@ -24,6 +24,9 @@ class Mapa :
     
         #cria os pocos
         self.criarPocos(wumppus)
+
+        #seta o ouro
+        self.inserirOuroEFlecha()
         
 
     def printMapa(self):
@@ -38,8 +41,8 @@ class Mapa :
                 if self.mapa[i][j].wumppus == 1:
                     listPrint.append("wumppus")
                     cont = 1
-                if self.mapa[i][j].dinheiro == 1:
-                    listPrint.append("ouro")
+                if self.mapa[i][j].ouro == 1:
+                    listPrint.append("resplendor")
                     cont = 1
                 if self.mapa[i][j].flecha == 1:
                     listPrint.append("flecha")
@@ -112,8 +115,7 @@ class Mapa :
     
 
     def validarPosicao(self, i, j, wumppus):
-        if i == wumppus.position[0] and j == wumppus.position[1]:
-            return False
+        
         if i == 0 or i == 1:
             if j > 2 :
                
@@ -127,4 +129,35 @@ class Mapa :
                 else:
                     return False
             return True
+
+    def validarPosicaoOuro(self, i, j):
+       
+        if i == 0 or i == 1:
+            if j > 2 :
+               
+                return True
+            else:
+                return False
+        else:
+            if j == 0 or j == 1:
+                if i > 2:
+                    return True
+                else:
+                    return False
+            return True
+    
+    def inserirOuroEFlecha(self):
+        
+        x = randrange(0,4)
+        y = randrange(0,4)
+        while not(self.validarPosicaoOuro(y,x)):
+            x = randrange(0,4)
+            y = randrange(0,4) 
+        self.mapa[y][x].ouro = 1
+
+        x = randrange(0,4)
+        y = randrange(0,4)
+
+        self.mapa[y][x].flecha = 1
+
         

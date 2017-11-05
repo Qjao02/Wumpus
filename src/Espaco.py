@@ -1,11 +1,10 @@
 class Espaco:
     wumppus = None
-    dinheiro = None
+    ouro = None
     flecha = None
     poco = None
     fedo = None
     briza = None
-
 
     def __init__(self):
         print "criou um novo espaco"
