@@ -7,7 +7,7 @@ class Mapa :
     listaDePocos = []
 
 
-    def __init__ (self,wumppus):
+    def __init__ (self):
         
         #criaMatriz
         for i in range (0,4):
@@ -15,18 +15,8 @@ class Mapa :
             for j in range(0,4):
                 newEspaco = Espaco()
                 newList.append(newEspaco)
-            self.mapa.append(newList)
-        
-        self.printMapa()
-        
-        #cria o wumppus
-        self.criarWumppus(wumppus)
-    
-        #cria os pocos
-        self.criarPocos(wumppus)
-
-        #seta o ouro
-        self.inserirOuroEFlecha()
+            self.mapa.append(newList)        
+       
         
 
     def printMapa(self):
@@ -75,6 +65,8 @@ class Mapa :
         for i in range(0,len(self.mapa[wumppus.position[0]]))  :
                 if not (i == wumppus.position[1]) and not(self.mapa[wumppus.position[0]][i].poco == 1) and not(self.mapa[wumppus.position[0]][i].wumppus == 1) and not(i == 0 and wumppus.position[0] == 0):
                     self.mapa[wumppus.position[0]][i].fedo = 1
+
+        self.printMapa()
        
     
     def criarPocos(self, wumppus):
@@ -84,22 +76,28 @@ class Mapa :
             for j in range(0,len(self.mapa[i])):
                 if(self.validarPosicao(i, j, wumppus)):
                     self.inserirPoco(j,i)
-                    coordenadas =[i,j]
-                    self.listaDePocos.append(coordenadas)
                 if self.nPocos >= 3:
                     break
+        
+
+        self.printMapa()
+
         
                 
 
 
 
     def inserirPoco(self, x, y) : 
-        print x, y
+
         #se o valor de  random deve estar entre 0 e 2  o poco sera criado
         if randrange(0,10) <= 2 :
+
             self.nPocos = self.nPocos + 1
-            print "entrou if <= 2"
+            print "poco selecionado"
             self.mapa[y][x].poco = 1
+            coordenadas = [y,x]
+            self.listaDePocos.append(coordenadas)
+
             # adciona a briza de cada poco
             for i in range(0,len(self.mapa)):
                 if not(i == y) and not (self.mapa[i][x].poco == 1) and not(self.mapa[i][x].wumppus == 1) and not(i == 0 and x == 0):
@@ -109,6 +107,7 @@ class Mapa :
                 if not (i == x) and not(self.mapa[y][i].poco == 1) and not(self.mapa[y][i].wumppus == 1) and not(i == 0 and y == 0):
                     self.mapa[y][i].briza = 1
                 
+        self.printMapa()
                     
         
 
@@ -131,7 +130,10 @@ class Mapa :
             return True
 
     def validarPosicaoOuro(self, i, j):
-       
+        for a in range(0,len(self.listaDePocos)):
+            if i == self.listaDePocos[a][0] and j == self.listaDePocos[a][1]:
+                return False
+
         if i == 0 or i == 1:
             if j > 2 :
                

@@ -7,7 +7,6 @@ class Espaco:
     briza = None
 
     def __init__(self):
-        print "criou um novo espaco"
         self.wumppus = 0
         self.dinheiro = 0
         self.flecha = 0
