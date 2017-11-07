@@ -35,9 +35,6 @@ class Mapa :
                 if self.mapa[i][j].ouro == 1:
                     listPrint.append("resplendor")
                     cont = 1
-                if self.mapa[i][j].flecha == 1:
-                    listPrint.append("flecha")
-                    cont = 1
                 if self.mapa[i][j].fedo == 1:
                     listPrint.append("fedo")
                     cont = 1
@@ -149,7 +146,7 @@ class Mapa :
                     return False
             return True
     
-    def inserirOuroEFlecha(self):
+    def inserirOuro(self):
         
         x = randrange(0,4)
         y = randrange(0,4)
@@ -158,17 +155,11 @@ class Mapa :
             y = randrange(0,4) 
         self.mapa[y][x].ouro = 1
 
-        x = randrange(0,4)
-        y = randrange(0,4)
-
-        self.mapa[y][x].flecha = 1
 
 
-    def pegarSensacao(self,i,j):
+    def pegarSensacao(self,guerreiro):
 
-        listaSensacao = []
-        
-        for k in range (0, len(self.mapa[i][j])):
-            listaSensacao.append(self.mapa[i][j][k])
+        sensacoes = self.mapa[guerreiro.posicaoAtual[0]][guerreiro.posicaoAtual[1]]
+        sensacoes.mostrarEspaco() 
 
-        return listaSensacao
+        return sensacoes

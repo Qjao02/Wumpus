@@ -26,6 +26,10 @@ def main():
     #cria Guerreiro
     guerreiro = Guerreiro()
 
+    while True:
+        listaSensacao = mapa.pegarSensacao(guerreiro)
+        guerreiro.agir(listaSensacao)
+        input()
     
 
 
