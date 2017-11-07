@@ -21,6 +21,8 @@ class Guerreiro:
     def agir(self, listaSensacoes):
         self.sensacoes = listaSensacoes
         self.copiaParaMemoria
+        self.atualizaConhecimento()
+
 
 
 
@@ -31,6 +33,7 @@ class Guerreiro:
         self.memoria[self.posicaoAtual[0]][self.posicaoAtual[1]].fedo = listaSensacoes.fedo
         self.memoria[self.posicaoAtual[0]][self.posicaoAtual[1]].briza = listaSensacoes.briza
         self.memoria[self.posicaoAtual[0]][self.posicaoAtual[1]].poco = listaSensacoes.poco
+        self.memoria[self.posicaoAtual[0]][self.posicaoAtual[1]].visitado = 1
 
 
 
@@ -56,3 +59,52 @@ class Guerreiro:
 
     def gerarPossibilidades(self):
         pass
+
+
+    def atualizaConhecimento(self):
+
+       self.atualizaAdjPersonagem()
+
+
+    def atualizaAdjPersonagem(self):
+
+        if self.posicaoAtual[0] - 1 > = 0 :
+            if self.memoria[0 - 1].visitado == 0:
+
+                if self.memoria[self.posicaoAtual[0]][self.posicaoAtual[1]].briza == 1:
+                    self.memoria[0 - 1][self.posicaoAtual[1]].poco = 1
+                if self.memoria[self.posicaoAtual[0]][self.posicaoAtual[1]].fedo == 1:
+                    self.memoria[0 - 1][self.posicaoAtual[1]].wumppus = 1
+
+
+        if self.posicaoAtual[0] + 1 < 4 :
+            if self.memoria[0 + 1].visitado == 0:
+
+                if self.memoria[self.posicaoAtual[0]][self.posicaoAtual[1]].briza == 1:
+                    self.memoria[0 - 1][self.posicaoAtual[1]].poco = 1
+                if self.memoria[self.posicaoAtual[0]][self.posicaoAtual[1]].fedo == 1:
+                    self.memoria[0 - 1][self.posicaoAtual[1]].wumppus = 1
+
+
+        if self.posicaoAtual[1] - 1 > = 0 :
+            if self.memoria[0 - 1].visitado == 0:
+
+                if self.memoria[self.posicaoAtual[0]][self.posicaoAtual[1]].briza == 1:
+                    self.memoria[0 - 1][self.posicaoAtual[1]].poco = 1
+                if self.memoria[self.posicaoAtual[0]][self.posicaoAtual[1]].fedo == 1:
+                    self.memoria[0 - 1][self.posicaoAtual[1]].wumppus = 1
+
+
+        if self.posicaoAtual[1] + 1 < 4 :
+            if self.memoria[0 - 1].visitado == 0:
+
+                if self.memoria[self.posicaoAtual[0]][self.posicaoAtual[1]].briza == 1:
+                    self.memoria[0 - 1][self.posicaoAtual[1]].poco = 1
+                if self.memoria[self.posicaoAtual[0]][self.posicaoAtual[1]].fedo == 1:
+                    self.memoria[0 - 1][self.posicaoAtual[1]].wumppus = 1
+
+
+
+                
+   
+                

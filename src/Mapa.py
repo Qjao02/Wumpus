@@ -21,7 +21,6 @@ class Mapa :
 
     def printMapa(self):
 
-        print "blabla"
         listPrint = []
         cont = 0
         for i in range(0,len(self.mapa)):
