@@ -20,6 +20,7 @@ class Mapa :
         
 
     def printMapa(self):
+
         print "blabla"
         listPrint = []
         cont = 0
@@ -27,7 +28,7 @@ class Mapa :
             cont = 0
             for j in range(0, len(self.mapa[i])):
                 cont = 0
-                listPrint.append('||| ')
+                listPrint.append('|||||||| ')
                 if self.mapa[i][j].wumppus == 1:
                     listPrint.append("wumppus")
                     cont = 1
@@ -50,7 +51,7 @@ class Mapa :
                 if cont == 0:
                     listPrint.append("vazio")
                 
-                listPrint.append(' |||')
+                listPrint.append(' |||||||||')
             print listPrint
             listPrint[:] = []
     
@@ -59,11 +60,11 @@ class Mapa :
         #adcionaWumppus ao mapa
         self.mapa[wumppus.position[0]][wumppus.position[1]].wumppus = 1
         for i in range(0,len(self.mapa)):
-                if not(i == wumppus.position[0]) and not (self.mapa[i][wumppus.position[1]].poco == 1) and not(self.mapa[i][wumppus.position[1]].wumppus == 1) and not(i == 0 and wumppus.position[1] == 0):
+                if not(i == wumppus.position[0]) and not (self.mapa[i][wumppus.position[1]].poco == 1) and not(self.mapa[i][wumppus.position[1]].wumppus == 1) and not(i == 0 and wumppus.position[1] == 0) and ((i == wumppus.position[0] - 1) or (i == wumppus.position[0] + 1)):
                     self.mapa[i][wumppus.position[1]].fedo = 1
 
         for i in range(0,len(self.mapa[wumppus.position[0]]))  :
-                if not (i == wumppus.position[1]) and not(self.mapa[wumppus.position[0]][i].poco == 1) and not(self.mapa[wumppus.position[0]][i].wumppus == 1) and not(i == 0 and wumppus.position[0] == 0):
+                if not (i == wumppus.position[1]) and not(self.mapa[wumppus.position[0]][i].poco == 1) and not(self.mapa[wumppus.position[0]][i].wumppus == 1) and not(i == 0 and wumppus.position[0] == 0) and ((i == wumppus.position[1] - 1) or (i  == wumppus.position[1] + 1)):
                     self.mapa[wumppus.position[0]][i].fedo = 1
 
         self.printMapa()
@@ -100,11 +101,11 @@ class Mapa :
 
             # adciona a briza de cada poco
             for i in range(0,len(self.mapa)):
-                if not(i == y) and not (self.mapa[i][x].poco == 1) and not(self.mapa[i][x].wumppus == 1) and not(i == 0 and x == 0):
+                if not(i == y) and not (self.mapa[i][x].poco == 1) and not(self.mapa[i][x].wumppus == 1) and not(i == 0 and x == 0) and ((i == y-1) or (i == y + 1)):
                     self.mapa[i][x].briza = 1
 
             for i in range(0,len(self.mapa[y]))  :
-                if not (i == x) and not(self.mapa[y][i].poco == 1) and not(self.mapa[y][i].wumppus == 1) and not(i == 0 and y == 0):
+                if not (i == x) and not(self.mapa[y][i].poco == 1) and not(self.mapa[y][i].wumppus == 1) and not(i == 0 and y == 0) and ((i == x - 1) or (i == x + 1)):
                     self.mapa[y][i].briza = 1
                 
         self.printMapa()
@@ -162,4 +163,12 @@ class Mapa :
 
         self.mapa[y][x].flecha = 1
 
+
+    def pegarSensacao(self,i,j):
+
+        listaSensacao = []
         
+        for k in range (0, len(self.mapa[i][j])):
+            listaSensacao.append(self.mapa[i][j][k])
+
+        return listaSensacao

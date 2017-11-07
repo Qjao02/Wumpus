@@ -3,7 +3,7 @@ from Mapa import Mapa
 class Guerreiro:
     memoria = None
     flecha = None
-    posicaoAtual = []
+    posicaoAtual = None
     posicaoSupostaWumppus = []
     posicaoSupostaOuro = None
     score = 0 
@@ -12,4 +12,14 @@ class Guerreiro:
 
 
     def __init__(self):
+
         self.memoria = Mapa()
+        self.posicaoAtual = [0,0]
+
+
+
+    def sentir(self,listaSensacao):
+        pass
+
+
+
