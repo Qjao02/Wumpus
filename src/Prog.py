@@ -14,7 +14,7 @@ def main():
     mapa.criarPocos(wumppus)
 
     #seta o ouro
-    mapa.inserirOuroEFlecha()
+    mapa.inserirOuro()
     
     mapa.printMapa()
 
@@ -42,5 +42,5 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    main()  
     

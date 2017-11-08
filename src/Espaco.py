@@ -15,6 +15,28 @@ class Espaco:
 
 
 
+
+    def getWumppus(self):
+        return self.wumppus
+
+    def getOuro(self):
+        return self.ouro
+
+    def getPoco(self):
+        return self.poco
+
+    def getFedo(self):
+        return self.fedo
+
+    def getBriza(self):
+        return self.briza
+
+    def getVisitado(self):
+        return self.visitado
+
+
+
+
     def mostrarEspaco(self):
         cont = 0
         listPrint = []
