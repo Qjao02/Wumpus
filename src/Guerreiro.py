@@ -117,6 +117,62 @@ class Guerreiro:
         print "teste if4"
 
 
+    def atualizaMemoria(self):
+        for i in range(0, len(self.memoria.mapa)):
+            for j in range (0, len(self.memoria.mapa[i])):
+                if self.memoria.mapa[i][j].visitado == 0 :
+                    analizaAdj(i,j)
+                    
+
+
+
+    
+    def atualizAdjTarget(self, i,j):
+        
+        if j - 1 >= 0 :
+        
+            if self.memoria.mapa[i][j - 1].visitado== 0: 
+
+                if self.memoria.mapa[i][j].briza == 1:
+                    self.memoria.mapa[0 - 1][self.posicaoAtual[1]].poco = 1
+                if self.memoria.mapa[self.posicaoAtual[0]][self.posicaoAtual[1]].fedo == 1:
+                    self.memoria.mapa[0 - 1][self.posicaoAtual[1]].wumppus = 1
+
+        
+        if self.posicaoAtual[0] + 1 < 4 :
+            print "blabla"
+            obj = self.memoria.mapa[self.posicaoAtual[0]+1][self.posicaoAtual[1]]
+            if obj.visitado == 0:
+
+                if self.memoria.mapa[self.posicaoAtual[0]][self.posicaoAtual[1]].briza == 1:
+                    self.memoria.mapa[self.posicaoAtual[0] + 1][self.posicaoAtual[1]].poco = 1
+                if self.memoria.mapa[self.posicaoAtual[0]][self.posicaoAtual[1]].fedo == 1:
+                    self.memoria.mapa[0 - 1][self.posicaoAtual[1]].wumppus = 1
+
+        print "teste if2"
+
+        if self.posicaoAtual[1] - 1 >= 0 :
+            if self.memoria.mapa[self.posicaoAtual[0]][self.posicaoAtual[1] - 1].visitado == 0:
+
+                if self.memoria.mapa[self.posicaoAtual[0]][self.posicaoAtual[1]].briza == 1:
+                    self.memoria.mapa[0][self.posicaoAtual[1] - 1].poco = 1
+                if self.memoria.mapa[self.posicaoAtual[0]][self.posicaoAtual[1]].fedo == 1:
+                    self.memoria.mapa[0][self.posicaoAtual[1] - 1].wumppus = 1
+
+        print "teste if3"
+
+        if self.posicaoAtual[1] + 1 < 4 :
+            if self.memoria.mapa[self.posicaoAtual[0]][self.posicaoAtual[1] + 1].visitado == 0:
+
+                if self.memoria.mapa[self.posicaoAtual[0]][self.posicaoAtual[1]].briza == 1:
+                    self.memoria.mapa[0][self.posicaoAtual[1] + 1].poco = 1
+                if self.memoria.mapa[self.posicaoAtual[0]][self.posicaoAtual[1]].fedo == 1:
+                    self.memoria.mapa[0][self.posicaoAtual[1] + 1].wumppus = 1
+
+        print "teste if4"
+
+
+
     def tomarDecisao(self):
         possibilidades = []
         naoPossibilidades = []
@@ -124,6 +180,8 @@ class Guerreiro:
         
 
     def gerarPossibilidades(self, possibilidades, naoPossibilidades):
+        movimento = []
+        if()
         
         
 
