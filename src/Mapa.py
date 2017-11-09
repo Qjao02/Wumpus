@@ -2,13 +2,14 @@ from random import *
 from Espaco import Espaco
 
 class Mapa :
-    mapa = []
+    mapa = None
     nPocos = 0
-    listaDePocos = []
+    listaDePocos = None
 
 
     def __init__ (self):
-        
+        self.mapa = []
+        self.listaDePocos = []
         #criaMatriz
         for i in range (0,4):
             newList = []
@@ -63,7 +64,7 @@ class Mapa :
                 if not (i == wumppus.position[1]) and not(self.mapa[wumppus.position[0]][i].poco == 1) and not(self.mapa[wumppus.position[0]][i].wumppus == 1) and not(i == 0 and wumppus.position[0] == 0) and ((i == wumppus.position[1] - 1) or (i  == wumppus.position[1] + 1)):
                     self.mapa[wumppus.position[0]][i].fedo = 1
 
-        self.printMapa()
+        #self.printMapa()
        
     
     def criarPocos(self, wumppus):
@@ -77,7 +78,7 @@ class Mapa :
                     break
         
 
-        self.printMapa()
+        #self.printMapa()
 
         
                 
